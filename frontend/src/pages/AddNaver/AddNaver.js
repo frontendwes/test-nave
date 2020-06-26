@@ -1,5 +1,11 @@
 import React from "react";
 
-const AddNaver = () => <h1>AddNaver</h1>;
+import { Background } from "../../components";
+
+const AddNaver = () => (
+  <Background>
+    <h1>Add</h1>
+  </Background>
+);
 
 export default AddNaver;
