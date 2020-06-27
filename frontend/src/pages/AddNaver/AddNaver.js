@@ -1,10 +1,13 @@
 import React from "react";
 
-import { Background } from "../../components";
+import { Background, Header, Fonts } from "../../components";
 
 const AddNaver = () => (
   <Background>
-    <h1>Add</h1>
+    <Header />
+    <Fonts fontSize="large" fontWeight="large" lineHeight="large">
+      oi
+    </Fonts>
   </Background>
 );
 
