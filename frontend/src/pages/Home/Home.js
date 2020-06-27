@@ -8,8 +8,8 @@ const Home = () => (
     <Header />
     <Section>
       <HeaderList>
-        <h1>Navers</h1>
-        <Button primary marginSize="0px 0px 0px 40px">
+        <Title>Navers</Title>
+        <Button primary marginSize="0px 32px">
           Adcionar Naver
         </Button>
       </HeaderList>
@@ -26,28 +26,29 @@ const Home = () => (
 const Section = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 32px;
-  height: 70%;
 `;
 
 const HeaderList = styled.div`
   display: flex;
-  height: 50px;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 0;
+  margin: 50px 0px 25px 0px;
+`;
+
+const Title = styled.h1`
+  margin-left: 32px;
 `;
 
 const NaversList = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
   justify-content: space-between;
+  margin: 0 16px;
 `;
 
 const Navers = styled.img`
-  margin: 5px 0px 5px 5px;
+  margin: 16px 16px 0px 16px;
   flex-grow: 1;
   width: 281px;
   height: 281px;

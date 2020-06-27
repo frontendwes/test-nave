@@ -1,18 +1,14 @@
 import React from "react";
-import { Logo, Button } from "../../components";
+import { Logo, Button, Input } from "../../components";
 import styled from "styled-components";
 
 const Login = () => (
   <LoginBackground>
     <LoginForm>
       <Logo widthSize="235px" heightSize="60px" marginSize="auto" />
-      <Button primary widthSize="100%">
-        Entrar
-      </Button>
-      <Button primary widthSize="100%">
-        Entrar
-      </Button>
-      <Button primary widthSize="100%">
+      <Input name="email" placeholder="E-mail" widthSize inputTitle="E-mail" />
+      <Input name="senha" placeholder="Senha" widthSize inputTitle="Senha" />
+      <Button primary widthSize="100%" marginSize="32px 0px 0px 0px">
         Entrar
       </Button>
     </LoginForm>
@@ -34,5 +30,7 @@ const LoginForm = styled.div`
   height: 408px;
   border: 1px solid #212121;
   box-sizing: border-box;
+  padding: 40px 32px;
+  margin: 32px;
 `;
 export default Login;

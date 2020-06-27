@@ -1,29 +1,51 @@
 import React from "react";
 import styled from "styled-components";
 
-const InputComponent = ({ label, name, placeholder, ...props }) => {
-  return <Input label={label} placeholder={placeholder} name={name} />;
+const InputComponent = ({
+  widthSize = "280px",
+  label,
+  name,
+  placeholder,
+  inputTitle,
+  ...props
+}) => {
+  return (
+    <>
+      <Title>{inputTitle}</Title>
+      <Input
+        label={label}
+        placeholder={placeholder}
+        widthSize={widthSize}
+        name={name}
+        inputTitle={inputTitle}
+      />
+    </>
+  );
 };
 
 const Input = styled.input`
-  height: 45px;
-  width: 30vw;
-  border-radius: 6px;
-  background-color: #f2f2f2;
+  height: 40px;
+  width: ${(props) => props.widthSize};
   color: #353535;
-  font-family: Roboto;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 23px;
-  text-align: center;
-  border-radius: 6px;
-  margin-top: 10px;
-  border: none;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 24px;
+  text-align: left;
+  padding-left: 8px;
+  margin-top: 5px;
+  border: solid 1px #212121;
 
   ::placeholder {
-    color: #bdbaba;
+    color: #9e9e9e;
     opacity: 1;
   }
+`;
+
+const Title = styled.p`
+  margin-top: 32px;
+  font-weight: normal;
+  line-height: 14px;
+  text-align: 18;
 `;
 
 export default InputComponent;
