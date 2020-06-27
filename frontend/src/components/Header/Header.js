@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import logo from "../../assets/logo.png";
+import { Logo } from "../Logo";
 
 const HeaderComponent = () => {
   return (
     <Header>
-      <Logo src={logo} />
+      <Logo />
       <Logout>Sair</Logout>
     </Header>
   );
@@ -17,10 +17,6 @@ const Header = styled.div`
   align-items: center;
   height: 85px;
   margin: 0px 32px;
-`;
-
-const Logo = styled.img`
-  height: 35px;
 `;
 
 const Logout = styled.div`

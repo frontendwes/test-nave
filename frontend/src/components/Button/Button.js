@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const ButtonComponent = ({ type = "submit", ...props }) => {
-  return <Button type={type} {...props}></Button>;
+const ButtonComponent = ({
+  widthSize = "176px",
+  type = "submit",
+  ...props
+}) => {
+  return <Button type={type} widthSize={widthSize} {...props}></Button>;
 };
 
 const Button = styled.button`
@@ -11,8 +15,9 @@ const Button = styled.button`
   color: ${(props) => (props.primary ? "#FFF" : "#212121")};
   box-sizing: border-box;
   text-align: center;
-  width: 176px;
+  width: ${(props) => props.widthSize};
   height: 40px;
+  margin: ${(props) => props.marginSize};
 
   &:hover {
     cursor: pointer;
