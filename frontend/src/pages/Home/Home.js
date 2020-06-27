@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Header, Background } from "../../components";
+import { Header, Background, Button } from "../../components";
 import styled from "styled-components";
 
 const Home = () => (
@@ -9,7 +9,7 @@ const Home = () => (
     <Section>
       <HeaderList>
         <h1>Navers</h1>
-        <button>Adcionar novo</button>
+        <Button primary>Adcionar Naver</Button>
       </HeaderList>
       <NaversList>
         <Navers></Navers>
@@ -46,12 +46,10 @@ const NaversList = styled.div`
 
 const Navers = styled.img`
   margin: 5px 0px 5px 5px;
-  min-height: 100%;
-  max-width: 100%;
   flex-grow: 1;
   width: 281px;
-  height: 420px;
-  margin-top: 5px;
+  height: 281px;
   background-image: url("https://fotografiamais.com.br/wp-content/uploads/2019/04/camera-profissional-para-iniciantes-730x506.jpg");
+  background-position: center;
 `;
 export default Home;
