@@ -1,7 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Background, Header, Fonts, Input, Button } from "../../components";
+import {
+  Background,
+  Header,
+  Fonts,
+  Input,
+  Button,
+  DeleteIcon,
+  CloseIcon,
+  EditIcon,
+  BackIcon,
+} from "../../components";
 
 const AddNaver = () => (
   <Background>
@@ -10,7 +20,9 @@ const AddNaver = () => (
       <Form>
         <FormHeader>
           <Fonts fontSize="large" fontWeight="large" lineHeight="large">
-            Adicionar Naver
+            Adicionar Naver <DeleteIcon size="24" /> <CloseIcon size="30" />{" "}
+            <EditIcon size="24" />
+            <BackIcon size="24" />
           </Fonts>
         </FormHeader>
         <FormInputs>
@@ -18,7 +30,7 @@ const AddNaver = () => (
             <Input placeholder="Nome" name="nome" inputTitle="Nome" />
           </Label>
           <Label>
-            <Input placeholder="Cargo" name="nargo" inputTitle="Cargo" />
+            <Input placeholder="Cargo" name="cargo" inputTitle="Cargo" />
           </Label>
           <Label>
             <Input placeholder="Idade" name="idade" inputTitle="Idade" />
