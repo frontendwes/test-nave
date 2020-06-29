@@ -1,7 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Background, Header, Fonts, Input, Button } from "../../components";
+import {
+  Background,
+  Header,
+  Fonts,
+  Input,
+  Button,
+  BackIcon,
+} from "../../components";
 
 const EditNaver = () => (
   <Background>
@@ -10,6 +17,7 @@ const EditNaver = () => (
       <Form>
         <FormHeader>
           <Fonts fontSize="large" fontWeight="large" lineHeight="large">
+            <BackIcon size="23" />
             Editar Naver
           </Fonts>
         </FormHeader>

@@ -7,9 +7,6 @@ import {
   Fonts,
   Input,
   Button,
-  DeleteIcon,
-  CloseIcon,
-  EditIcon,
   BackIcon,
 } from "../../components";
 
@@ -20,9 +17,7 @@ const AddNaver = () => (
       <Form>
         <FormHeader>
           <Fonts fontSize="large" fontWeight="large" lineHeight="large">
-            Adicionar Naver <DeleteIcon size="24" /> <CloseIcon size="30" />{" "}
-            <EditIcon size="24" />
-            <BackIcon size="24" />
+            <BackIcon size="23" /> Adicionar Naver
           </Fonts>
         </FormHeader>
         <FormInputs>

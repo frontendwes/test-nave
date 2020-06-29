@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Header, Background, Button } from "../../components";
+import { Header, Background, Button, Card } from "../../components";
 import styled from "styled-components";
 
 const Home = () => (
@@ -14,10 +14,10 @@ const Home = () => (
         </Button>
       </HeaderList>
       <NaversList>
-        <Navers></Navers>
-        <Navers></Navers>
-        <Navers></Navers>
-        <Navers></Navers>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
       </NaversList>
     </Section>
   </Background>
@@ -43,19 +43,9 @@ const Title = styled.h1`
 const NaversList = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-self: center;
   justify-content: space-between;
-  margin: 0 16px;
+  margin: 0 31px;
 `;
 
-const Navers = styled.img`
-  margin: 16px 16px 0px 16px;
-  flex-grow: 1;
-  width: 281px;
-  height: 281px;
-  min-width: 281px;
-  min-height: 281px;
-  background-image: url("https://fotografiamais.com.br/wp-content/uploads/2019/04/camera-profissional-para-iniciantes-730x506.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-`;
 export default Home;

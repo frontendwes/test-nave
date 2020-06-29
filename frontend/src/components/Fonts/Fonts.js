@@ -9,7 +9,9 @@ const FontComponent = ({ ...props }) => {
   return <Font {...props}></Font>;
 };
 
-const Font = styled.h1`
+const Font = styled.p`
+  display: flex;
+  align-items: center;
   color: black;
 
   font-size: ${({ fontSize }) => {

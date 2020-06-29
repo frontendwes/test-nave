@@ -5,3 +5,4 @@ export * from "./Logo";
 export * from "./Input";
 export * from "./Fonts";
 export * from "./Icons";
+export * from "./Card";
