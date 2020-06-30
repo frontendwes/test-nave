@@ -26,6 +26,7 @@ const Home = () => (
 const Section = styled.div`
   display: flex;
   flex-direction: column;
+  align-content: space-around;
 `;
 
 const HeaderList = styled.div`
@@ -33,7 +34,7 @@ const HeaderList = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin: 50px 0px 25px 0px;
+  margin: 40px 0px 10px 0px;
 `;
 
 const Title = styled.h1`

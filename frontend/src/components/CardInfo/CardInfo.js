@@ -1,40 +1,41 @@
 import React from "react";
 import styled from "styled-components";
-import { Fonts, DeleteIcon, EditIcon } from "../../components";
+import { Text, DeleteIcon, EditIcon, CloseIcon } from "../../components";
 
 const CardInfoComponent = () => (
   <CardContent>
     <Picture />
     <Details>
-      <Fonts
+      <CloseIcon size="24px" />
+      <Text
         fontSize="large"
         fontWeight="large"
         lineHeight="36px"
         marginBottom="10px"
       >
         Juliano Reis
-      </Fonts>
-      <Fonts fontWeight="small" lineHeight="24px" marginBottom="24px">
+      </Text>
+      <Text fontWeight="small" lineHeight="24px" marginBottom="24px">
         Front-End Developer
-      </Fonts>
-      <Fonts fontWeight="large" lineHeight="24px" marginBottom="10px">
+      </Text>
+      <Text fontWeight="large" lineHeight="24px" marginBottom="10px">
         Juliano Reis
-      </Fonts>
-      <Fonts fontWeight="small" lineHeight="24px" marginBottom="24px">
+      </Text>
+      <Text fontWeight="small" lineHeight="24px" marginBottom="24px">
         Front-End Developer
-      </Fonts>
-      <Fonts fontWeight="large" lineHeight="24px" marginBottom="10px">
+      </Text>
+      <Text fontWeight="large" lineHeight="24px" marginBottom="10px">
         Juliano Reis
-      </Fonts>
-      <Fonts fontWeight="small" lineHeight="24px" marginBottom="24px">
+      </Text>
+      <Text fontWeight="small" lineHeight="24px" marginBottom="24px">
         Front-End Developer
-      </Fonts>
-      <Fonts fontWeight="large" lineHeight="24px" marginBottom="10px">
+      </Text>
+      <Text fontWeight="large" lineHeight="24px" marginBottom="10px">
         Juliano Reis
-      </Fonts>
-      <Fonts fontWeight="small" lineHeight="24px">
+      </Text>
+      <Text fontWeight="small" lineHeight="24px">
         Front-End Developer
-      </Fonts>
+      </Text>
       <Icons>
         <DeleteIcon size="24" />
         <EditIcon size="24" />
@@ -44,6 +45,7 @@ const CardInfoComponent = () => (
 );
 
 const CardContent = styled.div`
+  position: absolute;
   display: flex;
   width: 80%;
   flex-wrap: wrap;

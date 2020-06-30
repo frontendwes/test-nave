@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {
   Background,
   Header,
-  Fonts,
+  Text,
   Input,
   Button,
   BackIcon,
@@ -16,10 +16,10 @@ const EditNaver = () => (
     <Section>
       <Form>
         <FormHeader>
-          <Fonts fontSize="large" fontWeight="large" lineHeight="large">
+          <Text fontSize="large" fontWeight="large" lineHeight="large">
             <BackIcon size="23" />
             Editar Naver
-          </Fonts>
+          </Text>
         </FormHeader>
         <FormInputs>
           <Label>

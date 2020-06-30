@@ -18,6 +18,7 @@ const Button = styled.button`
   width: ${(props) => props.widthSize};
   height: 40px;
   margin: ${(props) => props.marginSize};
+  padding: 0px 7px;
 
   &:hover {
     cursor: pointer;

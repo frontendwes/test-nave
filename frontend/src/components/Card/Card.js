@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import React from "react";
 
-import { Fonts, DeleteIcon, EditIcon } from "../../components";
+import { Text, DeleteIcon, EditIcon } from "../../components";
 
 const cardComponent = () => (
   <Card>
     <Image />
     <Description>
-      <Fonts fontSize="medium" fontWeight="large" lineHeight="16px">
+      <Text fontSize="medium" fontWeight="large" lineHeight="16px">
         Juliano Reis
-      </Fonts>
-      <Fonts fontWeight="small" lineHeight="40px">
+      </Text>
+      <Text fontWeight="small" lineHeight="40px">
         Front-End Developer
-      </Fonts>
+      </Text>
     </Description>
     <Icons>
       <DeleteIcon size="24" />
@@ -21,7 +21,7 @@ const cardComponent = () => (
   </Card>
 );
 
-const Image = styled.img`
+const Image = styled.div`
   flex-grow: 1;
   width: 281px;
   height: 281px;

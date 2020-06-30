@@ -5,11 +5,11 @@ const LARGE = "large";
 const MEDIUM = "medium";
 const SMALL = "small";
 
-const FontComponent = ({ ...props }) => {
-  return <Font {...props}></Font>;
+const TextComponent = ({ ...props }) => {
+  return <Text {...props}></Text>;
 };
 
-const Font = styled.p`
+const Text = styled.p`
   display: flex;
   align-items: center;
   color: black;
@@ -41,4 +41,4 @@ const Font = styled.p`
   }};
 `;
 
-export default FontComponent;
+export default TextComponent;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {
   Background,
   Header,
-  Fonts,
+  Text,
   Input,
   Button,
   BackIcon,
@@ -16,9 +16,9 @@ const AddNaver = () => (
     <Section>
       <Form>
         <FormHeader>
-          <Fonts fontSize="large" fontWeight="large" lineHeight="large">
+          <Text fontSize="large" fontWeight="large" lineHeight="large">
             <BackIcon size="23" /> Adicionar Naver
-          </Fonts>
+          </Text>
         </FormHeader>
         <FormInputs>
           <Label>
