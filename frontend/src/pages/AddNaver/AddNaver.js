@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import {
   Background,
@@ -16,9 +17,11 @@ const AddNaver = () => (
     <Section>
       <Form>
         <FormHeader>
-          <Text fontSize="large" fontWeight="large" lineHeight="large">
-            <BackIcon size="23" /> Adicionar Naver
-          </Text>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Text fontSize="large" fontWeight="large" lineHeight="large">
+              <BackIcon size="23" /> Adicionar Naver
+            </Text>
+          </Link>
         </FormHeader>
         <FormInputs>
           <Label>

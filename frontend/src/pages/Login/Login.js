@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Logo,
-  Button,
-  Input,
-  Modal,
-  Alert,
-  Confirm,
-  CardInfo,
-} from "../../components";
+import { Logo, Button, Input } from "../../components";
 import styled from "styled-components";
 
 const Login = () => (
@@ -20,9 +12,6 @@ const Login = () => (
         Entrar
       </Button>
     </LoginForm>
-    <Modal>
-      <CardInfo />
-    </Modal>
   </LoginBackground>
 );
 

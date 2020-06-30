@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { Link } from "react-router-dom";
+
 import {
   Background,
   Header,
@@ -16,10 +18,12 @@ const EditNaver = () => (
     <Section>
       <Form>
         <FormHeader>
-          <Text fontSize="large" fontWeight="large" lineHeight="large">
-            <BackIcon size="23" />
-            Editar Naver
-          </Text>
+          <Link style={{ textDecoration: "none" }} to="/">
+            <Text fontSize="large" fontWeight="large" lineHeight="large">
+              <BackIcon size="23" />
+              Editar Naver
+            </Text>
+          </Link>
         </FormHeader>
         <FormInputs>
           <Label>

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import { Header, Background, Button, Card } from "../../components";
 import styled from "styled-components";
 
@@ -9,9 +9,11 @@ const Home = () => (
     <Section>
       <HeaderList>
         <Title>Navers</Title>
-        <Button primary marginSize="0px 32px">
-          Adcionar Naver
-        </Button>
+        <Link to="/add" style={{ textDecoration: "none" }}>
+          <Button primary marginSize="0px 32px">
+            Adcionar Naver
+          </Button>
+        </Link>
       </HeaderList>
       <NaversList>
         <Card />
@@ -46,7 +48,7 @@ const NaversList = styled.div`
   flex-wrap: wrap;
   justify-self: center;
   justify-content: space-between;
-  margin: 0 31px;
+  margin-right: 32px;
 `;
 
 export default Home;
