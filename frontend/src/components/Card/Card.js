@@ -7,10 +7,10 @@ const cardComponent = () => (
   <Card>
     <Image />
     <Description>
-      <Fonts fontSize="medium" fontWeight="large" lineHeight="small">
+      <Fonts fontSize="medium" fontWeight="large" lineHeight="16px">
         Juliano Reis
       </Fonts>
-      <Fonts fontWeight="small" lineHeight="large">
+      <Fonts fontWeight="small" lineHeight="40px">
         Front-End Developer
       </Fonts>
     </Description>
@@ -30,7 +30,6 @@ const Image = styled.img`
   background-image: url("https://fotografiamais.com.br/wp-content/uploads/2019/04/camera-profissional-para-iniciantes-730x506.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  border: none;
 `;
 
 const Card = styled.div`

@@ -6,3 +6,4 @@ export * from "./Input";
 export * from "./Fonts";
 export * from "./Icons";
 export * from "./Card";
+export * from "./CardInfo";

@@ -13,6 +13,8 @@ const Font = styled.p`
   display: flex;
   align-items: center;
   color: black;
+  line-height: ${(props) => props.lineHeight};
+  margin-bottom: ${(props) => props.marginBottom};
 
   font-size: ${({ fontSize }) => {
     switch (fontSize) {
@@ -34,18 +36,6 @@ const Font = styled.p`
         return "400";
       case SMALL:
         return "300";
-      default:
-    }
-  }};
-
-  line-height: ${({ lineHeight }) => {
-    switch (lineHeight) {
-      case LARGE:
-        return "36px";
-      case MEDIUM:
-        return "24px";
-      case SMALL:
-        return "18px";
       default:
     }
   }};
