@@ -10,7 +10,7 @@ function App() {
   return (
     <AuthProvider value={{ authenticated: false }}>
       <Router history={history}>
-        <Routes />;
+        <Routes />
       </Router>
     </AuthProvider>
   );

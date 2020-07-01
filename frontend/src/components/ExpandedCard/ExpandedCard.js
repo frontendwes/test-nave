@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Text, DeleteIcon, EditIcon, CloseIcon } from "../../components";
+import { Text, DeleteIcon, EditIcon, CloseIcon } from "..";
 import { Link } from "react-router-dom";
 
-const CardInfoComponent = () => (
-  <CardInfo>
+const ExpandedCardComponent = () => (
+  <ExpandedCard>
     <Picture />
     <Details>
       <CloseIcon size="24px" />
@@ -46,10 +46,10 @@ const CardInfoComponent = () => (
         </Link>
       </Icons>
     </Details>
-  </CardInfo>
+  </ExpandedCard>
 );
 
-const CardInfo = styled.div`
+const ExpandedCard = styled.div`
   position: absolute;
   display: flex;
   width: 80%;
@@ -79,4 +79,4 @@ const Icons = styled.span`
   margin-top: 30px;
   margin-bottom: 25px;
 `;
-export default CardInfoComponent;
+export default ExpandedCardComponent;

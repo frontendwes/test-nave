@@ -18,12 +18,12 @@ const EditNaver = () => (
     <Section>
       <Form>
         <FormHeader>
-          <Link style={{ textDecoration: "none" }} to="/">
-            <Text fontSize="large" fontWeight="large" lineHeight="large">
+          <Text fontSize="large" fontWeight="large" lineHeight="large">
+            <Link style={{ textDecoration: "none" }} to="/">
               <BackIcon size="23" />
-              Editar Naver
-            </Text>
-          </Link>
+            </Link>
+            Editar Naver
+          </Text>
         </FormHeader>
         <FormInputs>
           <Label>
@@ -81,8 +81,11 @@ const Form = styled.form`
   width: 45%;
   margin-top: 64px;
 `;
+
 const FormHeader = styled.div`
+  display: flex;
   align-self: flex-start;
+  align-items: center;
 `;
 
 const FormInputs = styled.div`

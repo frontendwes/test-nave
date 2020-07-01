@@ -6,10 +6,10 @@ import { Text, Button } from "../../components";
 const ConfirmComponent = () => (
   <Confirm>
     <Text fontSize="large" fontWeight="large" marginBottom="24px">
-      Naver Criado
+      Excluir Naver
     </Text>
     <Text fontWeight="small" marginBottom="32px">
-      Naver Criado com sucesso!
+      Tem certeza que deseja excluir este Naver?
     </Text>
     <Buttons>
       <Button>Cancelar</Button>

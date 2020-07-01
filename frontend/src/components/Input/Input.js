@@ -7,6 +7,7 @@ const InputComponent = ({
   name,
   placeholder,
   inputTitle,
+  onChange,
   ...props
 }) => {
   return (
@@ -18,6 +19,7 @@ const InputComponent = ({
         widthSize={widthSize}
         name={name}
         inputTitle={inputTitle}
+        onChange={onChange}
       />
     </>
   );

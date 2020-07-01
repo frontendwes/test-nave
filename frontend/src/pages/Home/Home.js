@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Header, Background, Button } from "../../components";
+import { Header, Background, Button, Card } from "../../components";
 import styled from "styled-components";
 import api from "../../services/api";
 
@@ -10,7 +10,6 @@ const Home = () => {
   useEffect(() => {
     (async () => {
       const { data } = await api.get("/navers");
-
       setNavers(data);
     })();
   }, []);
@@ -28,11 +27,9 @@ const Home = () => {
           </Link>
         </HeaderList>
         <NaversList>
-          <ul>
-            {navers.map((naver) => (
-              <li key={naver.id}>{naver.name}</li>
-            ))}
-          </ul>
+          {navers.map((naver) => (
+            <Card naver={naver} key={naver.id} />
+          ))}
         </NaversList>
       </Section>
     </Background>

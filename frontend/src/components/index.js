@@ -6,7 +6,7 @@ export * from "./Input";
 export * from "./Text";
 export * from "./Icons";
 export * from "./Card";
-export * from "./CardInfo";
+export * from "./ExpandedCard";
 export * from "./Alert";
 export * from "./Modal";
 export * from "./Confirm";
