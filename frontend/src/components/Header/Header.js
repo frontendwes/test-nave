@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Logo } from "../Logo";
+import { Context } from "../../Context/AuthContext";
 
 const HeaderComponent = () => {
+  const { handleLogout } = useContext(Context);
   return (
     <Header>
       <Logo />
-      <Logout>Sair</Logout>
+      <Logout onClick={handleLogout}>Sair</Logout>
     </Header>
   );
 };

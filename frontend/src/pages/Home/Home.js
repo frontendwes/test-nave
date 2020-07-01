@@ -1,29 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Header, Background, Button, Card } from "../../components";
+import { Header, Background, Button } from "../../components";
 import styled from "styled-components";
+import api from "../../services/api";
 
-const Home = () => (
-  <Background>
-    <Header />
-    <Section>
-      <HeaderList>
-        <Title>Navers</Title>
-        <Link to="/add" style={{ textDecoration: "none" }}>
-          <Button primary marginSize="0px 32px">
-            Adcionar Naver
-          </Button>
-        </Link>
-      </HeaderList>
-      <NaversList>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </NaversList>
-    </Section>
-  </Background>
-);
+const Home = () => {
+  const [navers, setNavers] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await api.get("/navers");
+
+      setNavers(data);
+    })();
+  }, []);
+
+  return (
+    <Background>
+      <Header />
+      <Section>
+        <HeaderList>
+          <Title>Navers</Title>
+          <Link to="/add" style={{ textDecoration: "none" }}>
+            <Button primary marginSize="0px 32px">
+              Adcionar Naver
+            </Button>
+          </Link>
+        </HeaderList>
+        <NaversList>
+          <ul>
+            {navers.map((naver) => (
+              <li key={naver.id}>{naver.name}</li>
+            ))}
+          </ul>
+        </NaversList>
+      </Section>
+    </Background>
+  );
+};
 
 const Section = styled.div`
   display: flex;

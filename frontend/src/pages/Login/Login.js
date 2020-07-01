@@ -1,19 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Logo, Button, Input } from "../../components";
 import styled from "styled-components";
 
-const Login = () => (
-  <LoginBackground>
-    <LoginForm>
-      <Logo widthSize="235px" heightSize="60px" marginSize="auto" />
-      <Input name="email" placeholder="E-mail" widthSize inputTitle="E-mail" />
-      <Input name="senha" placeholder="Senha" widthSize inputTitle="Senha" />
-      <Button primary widthSize="100%" marginSize="32px 0px 0px 0px">
-        Entrar
-      </Button>
-    </LoginForm>
-  </LoginBackground>
-);
+import { Context } from "../../Context/AuthContext";
+
+const Login = () => {
+  const { handleLogin } = useContext(Context);
+
+  // const { email, setEmail } = useState("");
+  // const { password, setPassword } = useState("");
+
+  return (
+    <LoginBackground>
+      <LoginForm>
+        <Logo widthSize="235px" heightSize="60px" marginSize="auto" />
+        <Input
+          name="email"
+          placeholder="E-mail"
+          widthSize
+          inputTitle="E-mail"
+        />
+        <Input name="senha" placeholder="Senha" widthSize inputTitle="Senha" />
+        <Button
+          primary
+          widthSize="100%"
+          marginSize="32px 0px 0px 0px"
+          onClick={handleLogin}
+        >
+          Entrar
+        </Button>
+      </LoginForm>
+    </LoginBackground>
+  );
+};
 
 const LoginBackground = styled.div`
   display: flex;
