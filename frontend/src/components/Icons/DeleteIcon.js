@@ -4,16 +4,16 @@ import styled from "styled-components";
 
 import { Modal, Confirm } from "../../components";
 
-const DeleteIconComponent = () => {
-  const [isDeleteConfirm, setDeleteConfirm] = useState(false);
+const DeleteIconComponent = ({ naverId }) => {
+  const [isDeleteConfirm, setDeleteConfirm] = useState("");
   return (
     <>
-      <DeleteIcon size="24" onClick={() => setDeleteConfirm(true)} />
-      {isDeleteConfirm ? (
+      <DeleteIcon size="24" onClick={() => setDeleteConfirm(naverId)} />
+      {isDeleteConfirm && (
         <Modal>
-          <Confirm />
+          <Confirm naverId={naverId} />
         </Modal>
-      ) : null}
+      )}
     </>
   );
 };

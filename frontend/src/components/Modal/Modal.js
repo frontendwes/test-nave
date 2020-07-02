@@ -6,7 +6,7 @@ const ModalComponent = ({ children }) => {
 };
 
 const Modal = styled.div`
-  position: absolute;
+  position: fixed;
   display: flex;
   width: 100vw;
   height: 100vh;

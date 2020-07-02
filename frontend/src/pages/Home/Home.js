@@ -8,10 +8,15 @@ const Home = () => {
   const [navers, setNavers] = useState([]);
 
   useEffect(() => {
-    (async () => {
-      const { data } = await api.get("/navers");
-      setNavers(data);
-    })();
+    async function fetchNavers() {
+      try {
+        const { data } = await api.get("/navers");
+        setNavers(data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchNavers();
   }, []);
 
   return (

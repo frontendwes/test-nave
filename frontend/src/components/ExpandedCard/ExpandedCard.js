@@ -1,53 +1,74 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Text, DeleteIcon, EditIcon, CloseIcon } from "..";
-import { Link } from "react-router-dom";
+import { Text, DeleteIcon, EditIcon, CloseIcon } from "../../components";
+import { Link, useHistory } from "react-router-dom";
+import api from "../../services/api";
 
-const ExpandedCardComponent = () => (
-  <ExpandedCard>
-    <Picture />
-    <Details>
-      <CloseIcon size="24px" />
-      <Text
-        fontSize="large"
-        fontWeight="large"
-        lineHeight="36px"
-        marginBottom="10px"
-      >
-        Juliano Reis
-      </Text>
-      <Text fontWeight="small" lineHeight="24px" marginBottom="24px">
-        Front-End Developer
-      </Text>
-      <Text fontWeight="large" lineHeight="24px" marginBottom="10px">
-        Juliano Reis
-      </Text>
-      <Text fontWeight="small" lineHeight="24px" marginBottom="24px">
-        Front-End Developer
-      </Text>
-      <Text fontWeight="large" lineHeight="24px" marginBottom="10px">
-        Juliano Reis
-      </Text>
-      <Text fontWeight="small" lineHeight="24px" marginBottom="24px">
-        Front-End Developer
-      </Text>
-      <Text fontWeight="large" lineHeight="24px" marginBottom="10px">
-        Juliano Reis
-      </Text>
-      <Text fontWeight="small" lineHeight="24px">
-        Front-End Developer
-      </Text>
-      <Icons>
-        <Link to="/add">
-          <DeleteIcon size="24" />
-        </Link>
-        <Link to="/edit">
-          <EditIcon size="24" />
-        </Link>
-      </Icons>
-    </Details>
-  </ExpandedCard>
-);
+const ExpandedCardComponent = ({ naverId }) => {
+  const [naver, setNaver] = useState([]);
+
+  useEffect(() => {
+    async function fetchNavers() {
+      try {
+        const { data } = await api.get(`/navers/${naverId}`);
+        setNaver(data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchNavers();
+  }, [naverId]);
+
+  let history = useHistory();
+
+  function handleClick() {
+    history.push("/");
+  }
+
+  return (
+    <ExpandedCard>
+      <Picture src={naver.url} />
+      <Details>
+        <CloseIcon size="24px" onClick={handleClick} />
+        <Text
+          fontSize="large"
+          fontWeight="large"
+          lineHeight="36px"
+          marginBottom="10px"
+        >
+          {naver.name}
+        </Text>
+        <Text fontWeight="small" lineHeight="24px" marginBottom="24px">
+          {naver.job_role}
+        </Text>
+        <Text fontWeight="large" lineHeight="24px" marginBottom="10px">
+          Idade
+        </Text>
+        <Text fontWeight="small" lineHeight="24px" marginBottom="24px">
+          {naver.birthdate}
+        </Text>
+        <Text fontWeight="large" lineHeight="24px" marginBottom="10px">
+          Tempo de Empresa
+        </Text>
+        <Text fontWeight="small" lineHeight="24px" marginBottom="24px">
+          {naver.admission_date}
+        </Text>
+        <Text fontWeight="large" lineHeight="24px" marginBottom="10px">
+          Projetos que participou
+        </Text>
+        <Text fontWeight="small" lineHeight="24px">
+          {naver.project}
+        </Text>
+        <Icons>
+          <DeleteIcon size="24" naverId={naverId} />
+          <Link to="/edit">
+            <EditIcon size="24" />
+          </Link>
+        </Icons>
+      </Details>
+    </ExpandedCard>
+  );
+};
 
 const ExpandedCard = styled.div`
   position: absolute;
@@ -56,11 +77,10 @@ const ExpandedCard = styled.div`
   flex-wrap: wrap;
   background-color: #fff;
 `;
-const Picture = styled.div`
+const Picture = styled.img`
   width: 100%;
   max-width: 503px;
   height: 503px;
-  background-image: url("https://fotografiamais.com.br/wp-content/uploads/2019/04/camera-profissional-para-iniciantes-730x506.jpg");
   background-position: center;
   background-repeat: no-repeat;
 `;

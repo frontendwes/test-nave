@@ -10,11 +10,12 @@ import {
 } from "../../components";
 
 const CardComponent = ({ naver }) => {
-  const [isExpandedCard, setExpandedCard] = useState(false);
+  const [isExpandedCard, setExpandedCard] = useState(null);
+  const [naverId, setNaverId] = useState("");
 
   function handleExpandedCard(id) {
-    console.log(id);
-    setExpandedCard(true);
+    setExpandedCard(id);
+    setNaverId(id);
   }
 
   return (
@@ -29,16 +30,16 @@ const CardComponent = ({ naver }) => {
         </Text>
       </Description>
       <Icons>
-        <DeleteIcon size="24" />
+        <DeleteIcon size="24" naverId={naver.id} />
         <Link to="/edit">
           <EditIcon size="24" />
         </Link>
       </Icons>
-      {isExpandedCard ? (
+      {isExpandedCard && (
         <Modal>
-          <ExpandedCard />
+          <ExpandedCard naverId={naverId} />
         </Modal>
-      ) : null}
+      )}
     </Card>
   );
 };

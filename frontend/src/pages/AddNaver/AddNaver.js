@@ -54,11 +54,12 @@ const AddNaver = () => {
       url,
     };
 
-    await api.post("/navers", data).catch((e) => {
-      console.log(e);
-    });
-
-    setAlert(true);
+    try {
+      await api.post("/navers", data);
+      setAlert(true);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -133,7 +134,7 @@ const AddNaver = () => {
       </Section>
       {alert ? (
         <Modal>
-          <Alert />
+          <Alert title="Naver Criado" message="Naver criado com sucesso" />
         </Modal>
       ) : null}
     </Background>
