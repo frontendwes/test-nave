@@ -6,7 +6,8 @@ import { Header, Background, Button, Card } from "../../components";
 
 import api from "../../services/api";
 
-const Home = () => {
+const Home = ({location}) => {
+  console.log(location)
   const [navers, setNavers] = useState([]);
 
   useEffect(() => {

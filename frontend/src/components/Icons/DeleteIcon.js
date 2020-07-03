@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Delete } from "@styled-icons/material-sharp";
+import { useHistory } from "react-router-dom";
 
 import { Text, Button, Modal } from "../../components";
 
 import api from "../../services/api";
 
 const DeleteIconComponent = ({ naverId }) => {
+  const history = useHistory();
   const [isDeleteConfirm, setDeleteConfirm] = useState(false);
 
   async function handleConfirm() {
     try {
       await api.delete(`/navers/${naverId}`);
       setDeleteConfirm(false);
+      console.log(history);
     } catch (err) {
       console.log(err);
     }

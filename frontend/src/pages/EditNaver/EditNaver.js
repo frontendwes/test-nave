@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
+import moment from "moment";
 
 import api from "../../services/api";
 
@@ -20,26 +21,6 @@ const EditNaver = ({ match: { params } }) => {
 
   const [alert, setAlert] = useState(false);
   const [naver, setNaver] = useState({});
-  const [naverName, setNaverName] = useState({});
-  const [isLoading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchNavers = async () => {
-      try {
-        setLoading(true);
-        const { data } = await api.get(`/navers/${params.id}`);
-        setNaver(data);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchNavers();
-  }, [params.id]);
-
-  console.log("naver", naver.name);
-
   const [formData, setFormData] = useState({
     name: "",
     job_role: "",
@@ -48,6 +29,29 @@ const EditNaver = ({ match: { params } }) => {
     project: "",
     url: "",
   });
+
+  useEffect(() => {
+    const fetchNavers = async () => {
+      try {
+        const { data } = await api.get(`/navers/${params.id}`);
+        setNaver(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchNavers();
+  }, [params.id]);
+
+  useEffect(() => {
+    setFormData({
+      name: naver.name,
+      job_role: naver.job_role,
+      birthdate: moment(naver.birthdate).format("DD/MM/YYYY"),
+      admission_date: moment(naver.admission_date).format("DD/MM/YYYY"),
+      project: naver.project,
+      url: naver.url,
+    });
+  }, [naver]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -76,12 +80,14 @@ const EditNaver = ({ match: { params } }) => {
     };
 
     try {
+      console.log(data);
       await api.put(`/navers/${naver.id}`, data);
       setAlert(true);
     } catch (err) {
       console.log(err);
     }
   };
+
   return (
     <Background>
       <Header />
@@ -95,19 +101,16 @@ const EditNaver = ({ match: { params } }) => {
           </FormHeader>
           <FormInputs>
             <Label>
-              {!isLoading && (
-                <Input
-                  value={naver.name}
-                  defaultValue="xxx2"
-                  name="name"
-                  inputTitle="Nome"
-                  onChange={handleInputChange}
-                />
-              )}
+              <Input
+                value={formData.name}
+                name="name"
+                inputTitle="Nome"
+                onChange={handleInputChange}
+              />
             </Label>
             <Label>
               <Input
-                value=""
+                value={formData.job_role}
                 name="job_role"
                 inputTitle="Cargo"
                 onChange={handleInputChange}
@@ -115,23 +118,23 @@ const EditNaver = ({ match: { params } }) => {
             </Label>
             <Label>
               <Input
-                placeholder={naver && naver.birthdate}
+                value={formData.birthdate}
                 name="birthdate"
-                inputTitle="Idade"
+                inputTitle="Data de nascimento"
                 onChange={handleInputChange}
               />
             </Label>
             <Label>
               <Input
-                placeholder={naver && naver.admission_date}
+                value={formData.admission_date}
                 name="admission_date"
-                inputTitle="Tempo de empresa"
+                inputTitle="Data de admissão"
                 onChange={handleInputChange}
               />
             </Label>
             <Label>
               <Input
-                placeholder={naver && naver.project}
+                value={formData.project}
                 name="project"
                 inputTitle="Projetos que participou"
                 onChange={handleInputChange}
@@ -139,7 +142,7 @@ const EditNaver = ({ match: { params } }) => {
             </Label>
             <Label>
               <Input
-                placeholder={naver && naver.url}
+                value={formData.url}
                 name="url"
                 inputTitle="URL da foto do Naver"
                 onChange={handleInputChange}

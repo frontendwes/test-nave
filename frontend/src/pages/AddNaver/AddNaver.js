@@ -95,17 +95,17 @@ const AddNaver = () => {
             </Label>
             <Label>
               <Input
-                placeholder="Idade"
+                placeholder="DD/MM/YYYY"
                 name="birthdate"
-                inputTitle="Idade"
+                inputTitle="Data de aniversario"
                 onChange={handleInputChange}
               />
             </Label>
             <Label>
               <Input
-                placeholder="Tempo de empresa"
+                placeholder="DD/MM/YYYY"
                 name="admission_date"
-                inputTitle="Tempo de empresa"
+                inputTitle="Data de admissão"
                 onChange={handleInputChange}
               />
             </Label>

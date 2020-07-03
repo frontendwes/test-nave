@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import moment from "moment";
 
 import { Text, DeleteIcon, EditIcon, CloseIcon } from "../../components";
 
@@ -43,13 +44,13 @@ const ExpandedCardComponent = ({ naverId, closeCard }) => {
           Idade
         </Text>
         <Text fontWeight="small" lineHeight="24px" marginBottom="24px">
-          {naver.birthdate}
+          {moment().diff(naver.birthdate, "years")} anos
         </Text>
         <Text fontWeight="large" lineHeight="24px" marginBottom="10px">
-          Tempo de Empresa
+          Tempo de empresa
         </Text>
         <Text fontWeight="small" lineHeight="24px" marginBottom="24px">
-          {naver.admission_date}
+          {moment().diff(naver.admission_date, "years")} ano(s)
         </Text>
         <Text fontWeight="large" lineHeight="24px" marginBottom="10px">
           Projetos que participou
