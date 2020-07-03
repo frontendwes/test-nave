@@ -20,18 +20,25 @@ const EditNaver = ({ match: { params } }) => {
 
   const [alert, setAlert] = useState(false);
   const [naver, setNaver] = useState({});
+  const [naverName, setNaverName] = useState({});
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchNavers = async () => {
       try {
+        setLoading(true);
         const { data } = await api.get(`/navers/${params.id}`);
         setNaver(data);
       } catch (err) {
         console.log(err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchNavers();
   }, [params.id]);
+
+  console.log("naver", naver.name);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -44,7 +51,6 @@ const EditNaver = ({ match: { params } }) => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-
     setFormData({ ...formData, [name]: value });
   };
 
@@ -89,16 +95,19 @@ const EditNaver = ({ match: { params } }) => {
           </FormHeader>
           <FormInputs>
             <Label>
-              <Input
-                name="name"
-                placeholder={naver && naver.name}
-                inputTitle="Nome"
-                onChange={handleInputChange}
-              />
+              {!isLoading && (
+                <Input
+                  value={naver.name}
+                  defaultValue="xxx2"
+                  name="name"
+                  inputTitle="Nome"
+                  onChange={handleInputChange}
+                />
+              )}
             </Label>
             <Label>
               <Input
-                placeholder={naver && naver.job_role}
+                value=""
                 name="job_role"
                 inputTitle="Cargo"
                 onChange={handleInputChange}
