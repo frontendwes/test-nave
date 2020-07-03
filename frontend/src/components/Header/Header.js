@@ -7,18 +7,22 @@ const HeaderComponent = () => {
   const { handleLogout } = useContext(Context);
   return (
     <Header>
-      <Logo />
-      <Logout onClick={handleLogout}>Sair</Logout>
+      <HeaderContent>
+        <Logo />
+        <Logout onClick={handleLogout}>Sair</Logout>
+      </HeaderContent>
     </Header>
   );
 };
 
 const Header = styled.div`
+  margin: 2vw;
+`;
+
+const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 85px;
-  margin: 0px 32px;
 `;
 
 const Logout = styled.div`

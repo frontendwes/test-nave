@@ -43,7 +43,6 @@ const EditNaver = ({ match: { params } }) => {
 
   function handleInputChange(event) {
     const { name, value } = event.target;
-
     setFormData({ ...formData, [name]: value });
   }
 
@@ -89,8 +88,8 @@ const EditNaver = ({ match: { params } }) => {
           <FormInputs>
             <Label>
               <Input
-                placeholder={naver && naver.name}
                 name="name"
+                value={naver && naver.name}
                 inputTitle="Nome"
                 onChange={handleInputChange}
               />
@@ -161,21 +160,18 @@ const EditNaver = ({ match: { params } }) => {
 
 const Section = styled.section`
   display: flex;
-  align-items: center;
   justify-content: center;
+  margin: auto 0;
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 45%;
-  margin-top: 64px;
   background-color: #fff;
-  padding: 32px;
   max-width: 650px;
   min-width: 300px;
+  margin-bottom: 100px;
 `;
 const FormHeader = styled.div`
   display: flex;

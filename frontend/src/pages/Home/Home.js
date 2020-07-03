@@ -17,7 +17,7 @@ const Home = () => {
       }
     }
     fetchNavers();
-  }, []);
+  }, [navers]);
 
   return (
     <Background>
@@ -26,9 +26,7 @@ const Home = () => {
         <HeaderList>
           <Title>Navers</Title>
           <Link to="/add" style={{ textDecoration: "none" }}>
-            <Button primary marginSize="0px 32px">
-              Adcionar Naver
-            </Button>
+            <Button primary>Adicionar Naver</Button>
           </Link>
         </HeaderList>
         <NaversList>
@@ -44,7 +42,7 @@ const Home = () => {
 const Section = styled.div`
   display: flex;
   flex-direction: column;
-  align-content: space-around;
+  margin: 2vw;
 `;
 
 const HeaderList = styled.div`
@@ -52,19 +50,16 @@ const HeaderList = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin: 40px 0px 10px 0px;
 `;
 
-const Title = styled.h1`
-  margin-left: 32px;
-`;
+const Title = styled.h1``;
 
 const NaversList = styled.div`
+  margin-top: 32px;
   display: flex;
   flex-wrap: wrap;
-  justify-self: center;
+  align-items: left;
   justify-content: space-between;
-  margin-right: 32px;
 `;
 
 export default Home;

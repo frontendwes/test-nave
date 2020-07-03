@@ -27,7 +27,7 @@ const CardComponent = ({ naver }) => {
       </Description>
       <Icons>
         <DeleteIcon size="24" naverId={naver.id} />
-        <EditIcon size="24" naver={naver} />
+        <EditIcon size="24" onClick={() => history.push(`/edit/${naver.id}`)} />
       </Icons>
       {isExpandedCard && (
         <Modal>
@@ -45,18 +45,20 @@ const CardComponent = ({ naver }) => {
 };
 
 const Card = styled.div`
-  flex-grow: 1;
   display: flex;
+  width: 500px;
+  height: 500px;
   min-width: 281px;
-  max-width: 300px;
+  min-height: 281px;
+  max-width: 420px;
+  max-height: 420px;
   flex-direction: column;
-  padding: 20px 0px;
-  margin-left: 32px;
+  margin-top: 32px;
 `;
 
 const Picture = styled.img`
-  height: 281px;
-
+  width: 100%;
+  overflow: hidden;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

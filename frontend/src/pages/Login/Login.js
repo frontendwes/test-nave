@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Logo, Button, Input } from "../../components";
 import styled from "styled-components";
 
@@ -7,8 +7,16 @@ import { Context } from "../../Context/AuthContext";
 const Login = () => {
   const { handleLogin } = useContext(Context);
 
-  // const { email, setEmail } = useState("");
-  // const { password, setPassword } = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+
+    setFormData({ ...formData, [name]: value });
+  }
 
   return (
     <LoginBackground>
@@ -16,16 +24,25 @@ const Login = () => {
         <Logo widthSize="235px" heightSize="60px" marginSize="auto" />
         <Input
           name="email"
+          type="email"
           placeholder="E-mail"
           widthSize
           inputTitle="E-mail"
+          onChange={handleInputChange}
         />
-        <Input name="senha" placeholder="Senha" widthSize inputTitle="Senha" />
+        <Input
+          name="password"
+          type="password"
+          placeholder="Senha"
+          widthSize
+          inputTitle="Senha"
+          onChange={handleInputChange}
+        />
         <Button
           primary
           widthSize="100%"
           marginSize="32px 0px 0px 0px"
-          onClick={handleLogin}
+          onClick={() => handleLogin(formData)}
         >
           Entrar
         </Button>

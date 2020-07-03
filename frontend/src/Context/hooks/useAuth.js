@@ -18,23 +18,23 @@ export default function useAuth() {
     setLoading(false);
   }, []);
 
-  async function handleLogin() {
+  async function handleLogin(formData) {
     const data = {
-      email: "testing-user@nave.rs",
-      password: "nave1234",
+      email: formData.email,
+      password: formData.password,
     };
 
-    const response = await api
-      .post("/users/login", data)
-      .catch((e) => console.log(e));
-
-    const token = response.data.token;
-
-    if (token) {
-      localStorage.setItem("NaverToken", JSON.stringify(token));
-      api.defaults.headers.Authorization = `Bearer ${token}`;
-      setAuthenticated(true);
-      history.push("/");
+    try {
+      const response = await api.post("/users/login", data);
+      const token = response && response.data.token;
+      if (token) {
+        localStorage.setItem("NaverToken", token);
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+        setAuthenticated(true);
+        history.push("/");
+      }
+    } catch (e) {
+      alert("Usuario ou senha invalido");
     }
   }
 

@@ -9,6 +9,7 @@ const InputComponent = ({
   inputTitle,
   onChange,
   value,
+  type,
   ...props
 }) => {
   return (
@@ -22,6 +23,7 @@ const InputComponent = ({
         inputTitle={inputTitle}
         onChange={onChange}
         value={value}
+        type={type}
       />
     </>
   );

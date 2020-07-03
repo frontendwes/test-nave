@@ -1,17 +1,15 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 import { Delete } from "@styled-icons/material-sharp";
-import { Text, Button, Modal, Alert } from "../../components";
+import { Text, Button, Modal } from "../../components";
 import api from "../../services/api";
 
 const DeleteIconComponent = ({ naverId }) => {
-  const [alert, setAlert] = useState(false);
   const [isDeleteConfirm, setDeleteConfirm] = useState(false);
 
   async function handleConfirm() {
     try {
       await api.delete(`/navers/${naverId}`);
-      setAlert(true);
       setDeleteConfirm(false);
     } catch (err) {
       console.log(err);
@@ -31,21 +29,12 @@ const DeleteIconComponent = ({ naverId }) => {
               Tem certeza que deseja excluir este Naver?
             </Text>
             <Buttons>
-              <Button>Cancelar</Button>
+              <Button onClick={() => setDeleteConfirm(false)}>Cancelar</Button>
               <Button marginSize="0 0 0 24px" primary onClick={handleConfirm}>
                 Confirmar
               </Button>
             </Buttons>
           </Confirm>
-        </Modal>
-      )}
-      {alert && (
-        <Modal>
-          <Alert
-            title="Naver Exluido"
-            message="Naver excluido com sucesso"
-            changeAlert={() => setAlert(false)}
-          />
         </Modal>
       )}
     </>

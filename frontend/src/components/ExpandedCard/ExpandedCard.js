@@ -71,12 +71,13 @@ const ExpandedCard = styled.div`
   position: relative;
   display: flex;
   width: 80%;
+  max-width: 1200px;
   flex-wrap: wrap;
   background-color: #fff;
   margin: 32px 0;
 `;
 const Picture = styled.img`
-  width: 100%;
+  display: flex;
   max-width: 503px;
   height: 503px;
   background-position: center;
@@ -84,8 +85,7 @@ const Picture = styled.img`
 `;
 const Details = styled.div`
   display: flex;
-  width: 100%;
-  width: 503px;
+  min-width: 300px;
   max-width: 503px;
   flex-direction: column;
   padding: 30px 30px 0px 30px;
