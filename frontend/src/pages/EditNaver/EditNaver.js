@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-
-import { Link } from "react-router-dom";
+import api from "../../services/api";
+import { useHistory } from "react-router-dom";
 
 import {
   Background,
@@ -10,62 +10,154 @@ import {
   Input,
   Button,
   BackIcon,
+  Modal,
+  Alert,
 } from "../../components";
 
-const EditNaver = () => (
-  <Background>
-    <Header />
-    <Section>
-      <Form>
-        <FormHeader>
-          <Text fontSize="large" fontWeight="large" lineHeight="large">
-            <Link style={{ textDecoration: "none" }} to="/">
-              <BackIcon size="23" />
-            </Link>
-            Editar Naver
-          </Text>
-        </FormHeader>
-        <FormInputs>
-          <Label>
-            <Input placeholder="Nome" name="nome" inputTitle="Nome" />
-          </Label>
-          <Label>
-            <Input placeholder="Cargo" name="cargo" inputTitle="Cargo" />
-          </Label>
-          <Label>
-            <Input placeholder="Idade" name="idade" inputTitle="Idade" />
-          </Label>
-          <Label>
-            <Input
-              placeholder="Tempo de empresa"
-              name="tempoDeEmpresa"
-              inputTitle="Tempo de empresa"
-            />
-          </Label>
-          <Label>
-            <Input
-              placeholder="Projetos que participou"
-              name="projetos"
-              inputTitle="Projetos que participou"
-            />
-          </Label>
-          <Label>
-            <Input
-              placeholder="URL da foto do Naver"
-              name="foto"
-              inputTitle="URL da foto do Naver"
-            />
-          </Label>
-        </FormInputs>
-        <FormFooter>
-          <Button primary marginSize="32px 0px 0px 0px">
-            Salvar
-          </Button>
-        </FormFooter>
-      </Form>
-    </Section>
-  </Background>
-);
+const EditNaver = ({ match: { params } }) => {
+  const history = useHistory();
+
+  const [alert, setAlert] = useState(false);
+  const [naver, setNaver] = useState({});
+
+  useEffect(() => {
+    const fetchNavers = async () => {
+      try {
+        const { data } = await api.get(`/navers/${params.id}`);
+        setNaver(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchNavers();
+  }, [params.id]);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    job_role: "",
+    birthdate: "",
+    admission_date: "",
+    project: "",
+    url: "",
+  });
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+
+    setFormData({ ...formData, [name]: value });
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    const {
+      name,
+      job_role,
+      birthdate,
+      admission_date,
+      project,
+      url,
+    } = formData;
+
+    const data = {
+      name,
+      job_role,
+      birthdate,
+      admission_date,
+      project,
+      url,
+    };
+
+    try {
+      await api.put(`/navers/${naver.id}`, data);
+      setAlert(true);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  return (
+    <Background>
+      <Header />
+      <Section>
+        <Form onSubmit={handleSubmit}>
+          <FormHeader>
+            <Text fontSize="large" fontWeight="large" lineHeight="large">
+              <BackIcon size="23" onClick={() => history.push("/")} />
+              Editar Naver
+            </Text>
+          </FormHeader>
+          <FormInputs>
+            <Label>
+              <Input
+                placeholder={naver && naver.name}
+                name="name"
+                inputTitle="Nome"
+                onChange={handleInputChange}
+              />
+            </Label>
+            <Label>
+              <Input
+                placeholder={naver && naver.job_role}
+                name="job_role"
+                inputTitle="Cargo"
+                onChange={handleInputChange}
+              />
+            </Label>
+            <Label>
+              <Input
+                placeholder={naver && naver.birthdate}
+                name="birthdate"
+                inputTitle="Idade"
+                onChange={handleInputChange}
+              />
+            </Label>
+            <Label>
+              <Input
+                placeholder={naver && naver.admission_date}
+                name="admission_date"
+                inputTitle="Tempo de empresa"
+                onChange={handleInputChange}
+              />
+            </Label>
+            <Label>
+              <Input
+                placeholder={naver && naver.project}
+                name="project"
+                inputTitle="Projetos que participou"
+                onChange={handleInputChange}
+              />
+            </Label>
+            <Label>
+              <Input
+                placeholder={naver && naver.url}
+                name="url"
+                inputTitle="URL da foto do Naver"
+                onChange={handleInputChange}
+              />
+            </Label>
+          </FormInputs>
+          <FormFooter>
+            <Button primary marginSize="32px 0px 0px 0px">
+              Salvar
+            </Button>
+          </FormFooter>
+        </Form>
+      </Section>
+      {alert && (
+        <Modal>
+          <Alert
+            title="Naver Atualizado"
+            message="Naver atualizado com sucesso"
+            changeAlert={() => {
+              setAlert(false);
+              history.push("/");
+            }}
+          />
+        </Modal>
+      )}
+    </Background>
+  );
+};
 
 const Section = styled.section`
   display: flex;
@@ -80,8 +172,11 @@ const Form = styled.form`
   justify-content: center;
   width: 45%;
   margin-top: 64px;
+  background-color: #fff;
+  padding: 32px;
+  max-width: 650px;
+  min-width: 300px;
 `;
-
 const FormHeader = styled.div`
   display: flex;
   align-self: flex-start;

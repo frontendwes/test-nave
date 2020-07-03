@@ -22,7 +22,7 @@ const Routes = () => (
     <CustomRoute exact path="/login" component={Login} />
     <CustomRoute isPrivate exact path="/" component={Home} />
     <CustomRoute isPrivate exact path="/add" component={AddNaver} />
-    <CustomRoute isPrivate exact path="/edit" component={EditNaver} />
+    <CustomRoute isPrivate exact path="/edit/:id" component={EditNaver} />
   </Switch>
 );
 

@@ -7,9 +7,11 @@ const BackgroundComponent = ({ children }) => {
 
 const Background = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  background-color: #fff;
 `;
 
 export default BackgroundComponent;

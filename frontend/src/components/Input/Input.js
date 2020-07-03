@@ -8,6 +8,7 @@ const InputComponent = ({
   placeholder,
   inputTitle,
   onChange,
+  value,
   ...props
 }) => {
   return (
@@ -20,6 +21,7 @@ const InputComponent = ({
         name={name}
         inputTitle={inputTitle}
         onChange={onChange}
+        value={value}
       />
     </>
   );

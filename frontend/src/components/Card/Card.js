@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import {
-  Text,
-  DeleteIcon,
-  EditIcon,
-  ExpandedCard,
-  Modal,
-} from "../../components";
+import { Text, DeleteIcon, EditIcon, ExpandedCard, Modal } from "../";
+import { useHistory } from "react-router-dom";
 
 const CardComponent = ({ naver }) => {
+  const history = useHistory();
+
   const [isExpandedCard, setExpandedCard] = useState(null);
   const [naverId, setNaverId] = useState("");
 
@@ -31,13 +27,17 @@ const CardComponent = ({ naver }) => {
       </Description>
       <Icons>
         <DeleteIcon size="24" naverId={naver.id} />
-        <Link to="/edit">
-          <EditIcon size="24" />
-        </Link>
+        <EditIcon size="24" naver={naver} />
       </Icons>
       {isExpandedCard && (
         <Modal>
-          <ExpandedCard naverId={naverId} />
+          <ExpandedCard
+            naverId={naverId}
+            closeCard={() => {
+              setExpandedCard(false);
+              history.push("/");
+            }}
+          />
         </Modal>
       )}
     </Card>
@@ -48,6 +48,7 @@ const Card = styled.div`
   flex-grow: 1;
   display: flex;
   min-width: 281px;
+  max-width: 300px;
   flex-direction: column;
   padding: 20px 0px;
   margin-left: 32px;
@@ -55,6 +56,8 @@ const Card = styled.div`
 
 const Picture = styled.img`
   height: 281px;
+
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;

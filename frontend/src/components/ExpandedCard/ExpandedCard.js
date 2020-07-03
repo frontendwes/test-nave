@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Text, DeleteIcon, EditIcon, CloseIcon } from "../../components";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import api from "../../services/api";
 
-const ExpandedCardComponent = ({ naverId }) => {
+const ExpandedCardComponent = ({ naverId, closeCard }) => {
   const [naver, setNaver] = useState([]);
 
   useEffect(() => {
@@ -19,17 +19,13 @@ const ExpandedCardComponent = ({ naverId }) => {
     fetchNavers();
   }, [naverId]);
 
-  let history = useHistory();
-
-  function handleClick() {
-    history.push("/");
-  }
+  const history = useHistory();
 
   return (
     <ExpandedCard>
       <Picture src={naver.url} />
       <Details>
-        <CloseIcon size="24px" onClick={handleClick} />
+        <CloseIcon size="24px" onClick={() => closeCard()} />
         <Text
           fontSize="large"
           fontWeight="large"
@@ -61,9 +57,10 @@ const ExpandedCardComponent = ({ naverId }) => {
         </Text>
         <Icons>
           <DeleteIcon size="24" naverId={naverId} />
-          <Link to="/edit">
-            <EditIcon size="24" />
-          </Link>
+          <EditIcon
+            size="24"
+            onClick={() => history.push(`/edit/${naverId}`)}
+          />
         </Icons>
       </Details>
     </ExpandedCard>
@@ -71,11 +68,12 @@ const ExpandedCardComponent = ({ naverId }) => {
 };
 
 const ExpandedCard = styled.div`
-  position: absolute;
+  position: relative;
   display: flex;
   width: 80%;
   flex-wrap: wrap;
   background-color: #fff;
+  margin: 32px 0;
 `;
 const Picture = styled.img`
   width: 100%;

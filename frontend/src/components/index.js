@@ -9,4 +9,3 @@ export * from "./Card";
 export * from "./ExpandedCard";
 export * from "./Alert";
 export * from "./Modal";
-export * from "./Confirm";

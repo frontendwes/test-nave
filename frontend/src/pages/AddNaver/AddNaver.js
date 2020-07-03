@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import api from "../../services/api";
 
@@ -16,6 +16,7 @@ import {
 } from "../../components";
 
 const AddNaver = () => {
+  const history = useHistory();
   const [alert, setAlert] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -132,11 +133,18 @@ const AddNaver = () => {
           </FormFooter>
         </Form>
       </Section>
-      {alert ? (
+      {alert && (
         <Modal>
-          <Alert title="Naver Criado" message="Naver criado com sucesso" />
+          <Alert
+            title="Naver Criado"
+            message="Naver criado com sucesso"
+            changeAlert={() => {
+              setAlert(false);
+              history.push("/");
+            }}
+          />
         </Modal>
-      ) : null}
+      )}
     </Background>
   );
 };
@@ -154,6 +162,10 @@ const Form = styled.form`
   justify-content: center;
   width: 45%;
   margin-top: 64px;
+  background-color: #fff;
+  padding: 32px;
+  max-width: 650px;
+  min-width: 300px;
 `;
 const FormHeader = styled.div`
   display: flex;

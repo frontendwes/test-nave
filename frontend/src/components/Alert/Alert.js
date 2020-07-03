@@ -1,19 +1,12 @@
 import styled from "styled-components";
 import React from "react";
-import { useHistory } from "react-router-dom";
 
 import { CloseIcon, Text } from "../../components";
 
-const AlertComponent = ({ title, message }) => {
-  let history = useHistory();
-
-  function handleClick() {
-    history.push("/");
-  }
-
+const AlertComponent = ({ title, message, changeAlert }) => {
   return (
     <Alert>
-      <CloseIcon size="24" onClick={handleClick} />
+      <CloseIcon size="24" onClick={changeAlert} />
       <Text fontSize="large" fontWeight="large" marginBottom="32px">
         {title}
       </Text>

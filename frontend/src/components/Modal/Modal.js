@@ -9,7 +9,7 @@ const Modal = styled.div`
   position: fixed;
   display: flex;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   top: 0;
   right: 0;
   transition: 0.5s;
