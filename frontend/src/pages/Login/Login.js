@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import { Logo, Button, Input } from "../../components";
 import styled from "styled-components";
-
 import { Context } from "../../Context/AuthContext";
+
+import { Logo, Button, Input } from "../../components";
 
 const Login = () => {
   const { handleLogin } = useContext(Context);
@@ -12,11 +12,10 @@ const Login = () => {
     password: "",
   });
 
-  function handleInputChange(event) {
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
-
     setFormData({ ...formData, [name]: value });
-  }
+  };
 
   return (
     <LoginBackground>

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Text, DeleteIcon, EditIcon, ExpandedCard, Modal } from "../";
 import { useHistory } from "react-router-dom";
+
+import { Text, DeleteIcon, EditIcon, ExpandedCard, Modal } from "../";
 
 const CardComponent = ({ naver }) => {
   const history = useHistory();
@@ -9,10 +10,10 @@ const CardComponent = ({ naver }) => {
   const [isExpandedCard, setExpandedCard] = useState(null);
   const [naverId, setNaverId] = useState("");
 
-  function handleExpandedCard(id) {
+  const handleExpandedCard = (id) => {
     setExpandedCard(id);
     setNaverId(id);
-  }
+  };
 
   return (
     <Card>
@@ -47,7 +48,7 @@ const CardComponent = ({ naver }) => {
 const Card = styled.div`
   display: flex;
   width: 500px;
-  height: 500px;
+
   min-width: 281px;
   min-height: 281px;
   max-width: 420px;
@@ -58,6 +59,7 @@ const Card = styled.div`
 
 const Picture = styled.img`
   width: 100%;
+  height: 500px;
   overflow: hidden;
   background-size: cover;
   background-position: center;

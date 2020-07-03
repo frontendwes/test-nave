@@ -28,13 +28,13 @@ const AddNaver = () => {
     url: "",
   });
 
-  function handleInputChange(event) {
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
 
     setFormData({ ...formData, [name]: value });
-  }
+  };
 
-  async function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const {
@@ -61,7 +61,7 @@ const AddNaver = () => {
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   return (
     <Background>

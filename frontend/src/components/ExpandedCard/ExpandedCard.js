@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Text, DeleteIcon, EditIcon, CloseIcon } from "../../components";
 import { useHistory } from "react-router-dom";
+
+import { Text, DeleteIcon, EditIcon, CloseIcon } from "../../components";
+
 import api from "../../services/api";
 
 const ExpandedCardComponent = ({ naverId, closeCard }) => {
@@ -76,13 +78,14 @@ const ExpandedCard = styled.div`
   background-color: #fff;
   margin: 32px 0;
 `;
+
 const Picture = styled.img`
   display: flex;
-  max-width: 503px;
-  height: 503px;
   background-position: center;
   background-repeat: no-repeat;
+  max-width: 503px;
 `;
+
 const Details = styled.div`
   display: flex;
   min-width: 300px;
@@ -90,6 +93,7 @@ const Details = styled.div`
   flex-direction: column;
   padding: 30px 30px 0px 30px;
 `;
+
 const Icons = styled.span`
   display: flex;
   height: 100%;
@@ -97,4 +101,5 @@ const Icons = styled.span`
   margin-top: 30px;
   margin-bottom: 25px;
 `;
+
 export default ExpandedCardComponent;

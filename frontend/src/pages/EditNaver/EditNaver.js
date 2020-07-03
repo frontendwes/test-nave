@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import api from "../../services/api";
 import { useHistory } from "react-router-dom";
+
+import api from "../../services/api";
 
 import {
   Background,
@@ -41,12 +42,13 @@ const EditNaver = ({ match: { params } }) => {
     url: "",
   });
 
-  function handleInputChange(event) {
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  }
 
-  async function handleSubmit(event) {
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const {
@@ -73,7 +75,7 @@ const EditNaver = ({ match: { params } }) => {
     } catch (err) {
       console.log(err);
     }
-  }
+  };
   return (
     <Background>
       <Header />
@@ -89,7 +91,7 @@ const EditNaver = ({ match: { params } }) => {
             <Label>
               <Input
                 name="name"
-                value={naver && naver.name}
+                placeholder={naver && naver.name}
                 inputTitle="Nome"
                 onChange={handleInputChange}
               />

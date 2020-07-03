@@ -1,7 +1,9 @@
-import styled from "styled-components";
 import React, { useState } from "react";
+import styled from "styled-components";
 import { Delete } from "@styled-icons/material-sharp";
+
 import { Text, Button, Modal } from "../../components";
+
 import api from "../../services/api";
 
 const DeleteIconComponent = ({ naverId }) => {
@@ -46,7 +48,7 @@ const Confirm = styled.div`
   position: absolute;
   justify-content: flex-start;
   flex-direction: column;
-  width: 40%;
+  width: 50%;
   background-color: #fff;
   padding: 32px;
   justify-content: space-between;

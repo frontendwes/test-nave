@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Header, Background, Button, Card } from "../../components";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+import { Header, Background, Button, Card } from "../../components";
+
 import api from "../../services/api";
 
 const Home = () => {
   const [navers, setNavers] = useState([]);
 
   useEffect(() => {
-    async function fetchNavers() {
+    const fetchNavers = async () => {
       try {
         const { data } = await api.get("/navers");
         setNavers(data);
       } catch (err) {
         console.log(err);
       }
-    }
+    };
     fetchNavers();
   }, [navers]);
 

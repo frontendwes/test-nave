@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-
-import api from "../../services/api";
 import history from "../../history";
 
-export default function useAuth() {
+import api from "../../services/api";
+
+const useAuth = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +18,7 @@ export default function useAuth() {
     setLoading(false);
   }, []);
 
-  async function handleLogin(formData) {
+  const handleLogin = async (formData) => {
     const data = {
       email: formData.email,
       password: formData.password,
@@ -36,14 +36,16 @@ export default function useAuth() {
     } catch (e) {
       alert("Usuario ou senha invalido");
     }
-  }
+  };
 
-  function handleLogout() {
+  const handleLogout = () => {
     setAuthenticated(false);
     localStorage.removeItem("NaverToken");
     api.defaults.headers.Authorization = undefined;
     history.push("/login");
-  }
+  };
 
   return { authenticated, loading, handleLogin, handleLogout };
-}
+};
+
+export default useAuth;

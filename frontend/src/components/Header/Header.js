@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Logo } from "../Logo";
 import { Context } from "../../Context/AuthContext";
+
+import { Logo } from "../Logo";
 
 const HeaderComponent = () => {
   const { handleLogout } = useContext(Context);
