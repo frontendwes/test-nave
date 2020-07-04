@@ -15,7 +15,7 @@ const DeleteIconComponent = ({ naverId }) => {
     try {
       await api.delete(`/navers/${naverId}`);
       setDeleteConfirm(false);
-      console.log(history);
+      history.push({ pathname: "/", state: true });
     } catch (err) {
       console.log(err);
     }

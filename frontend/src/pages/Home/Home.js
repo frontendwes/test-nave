@@ -6,8 +6,8 @@ import { Header, Background, Button, Card } from "../../components";
 
 import api from "../../services/api";
 
-const Home = ({location}) => {
-  console.log(location)
+const Home = ({ location }) => {
+  const isDeleted = location.state;
   const [navers, setNavers] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Home = ({location}) => {
       }
     };
     fetchNavers();
-  }, [navers]);
+  }, [isDeleted]);
 
   return (
     <Background>
