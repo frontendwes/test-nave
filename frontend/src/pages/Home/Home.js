@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-import { Header, Background, Button, Card } from "../../components";
+import { Header, Background, Button, Card } from '../../components'
 
-import api from "../../services/api";
+import api from '../../services/api'
 
 const Home = ({ location }) => {
-  const isDeleted = location.state;
-  const [navers, setNavers] = useState([]);
+  const isDeleted = location.state
+  const [navers, setNavers] = useState([])
 
   useEffect(() => {
     const fetchNavers = async () => {
       try {
-        const { data } = await api.get("/navers");
-        setNavers(data);
+        const { data } = await api.get('/navers')
+        setNavers(data)
       } catch (err) {
-        console.log(err);
+        console.log(err)
       }
-    };
-    fetchNavers();
-  }, [isDeleted]);
+    }
+    fetchNavers()
+  }, [isDeleted])
 
   return (
     <Background>
@@ -28,7 +28,7 @@ const Home = ({ location }) => {
       <Section>
         <HeaderList>
           <Title>Navers</Title>
-          <Link to="/add" style={{ textDecoration: "none" }}>
+          <Link to='/add' style={{ textDecoration: 'none' }}>
             <Button primary>Adicionar Naver</Button>
           </Link>
         </HeaderList>
@@ -39,23 +39,23 @@ const Home = ({ location }) => {
         </NaversList>
       </Section>
     </Background>
-  );
-};
+  )
+}
 
 const Section = styled.div`
   display: flex;
   flex-direction: column;
   margin: 2vw;
-`;
+`
 
 const HeaderList = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-`;
+`
 
-const Title = styled.h1``;
+const Title = styled.h1``
 
 const NaversList = styled.div`
   margin-top: 32px;
@@ -63,6 +63,6 @@ const NaversList = styled.div`
   flex-wrap: wrap;
   align-items: left;
   justify-content: space-between;
-`;
+`
 
-export default Home;
+export default Home

@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const ModalComponent = ({ children }) => {
-  return <Modal>{children}</Modal>;
-};
+  return <Modal>{children}</Modal>
+}
 
 const Modal = styled.div`
   position: fixed;
@@ -16,6 +16,6 @@ const Modal = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   align-items: center;
   justify-content: center;
-`;
+`
 
-export default ModalComponent;
+export default ModalComponent

@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const BackgroundComponent = ({ children }) => {
-  return <Background>{children}</Background>;
-};
+  return <Background>{children}</Background>
+}
 
 const Background = styled.div`
   display: flex;
@@ -12,6 +12,6 @@ const Background = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #fff;
-`;
+`
 
-export default BackgroundComponent;
+export default BackgroundComponent

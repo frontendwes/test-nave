@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import { Link, useHistory } from 'react-router-dom'
 
-import api from "../../services/api";
+import api from '../../services/api'
 
 import {
   Background,
@@ -13,38 +13,31 @@ import {
   BackIcon,
   Modal,
   Alert,
-} from "../../components";
+} from '../../components'
 
 const AddNaver = () => {
-  const history = useHistory();
-  const [alert, setAlert] = useState(false);
+  const history = useHistory()
+  const [alert, setAlert] = useState(false)
 
   const [formData, setFormData] = useState({
-    name: "",
-    job_role: "",
-    birthdate: "",
-    admission_date: "",
-    project: "",
-    url: "",
-  });
+    name: '',
+    job_role: '',
+    birthdate: '',
+    admission_date: '',
+    project: '',
+    url: '',
+  })
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
 
-    setFormData({ ...formData, [name]: value });
-  };
+    setFormData({ ...formData, [name]: value })
+  }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    const {
-      name,
-      job_role,
-      birthdate,
-      admission_date,
-      project,
-      url,
-    } = formData;
+    const { name, job_role, birthdate, admission_date, project, url } = formData
 
     const data = {
       name,
@@ -53,15 +46,15 @@ const AddNaver = () => {
       admission_date,
       project,
       url,
-    };
+    }
 
     try {
-      await api.post("/navers", data);
-      setAlert(true);
+      await api.post('/navers', data)
+      setAlert(true)
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  };
+  }
 
   return (
     <Background>
@@ -69,65 +62,65 @@ const AddNaver = () => {
       <Section>
         <Form onSubmit={handleSubmit}>
           <FormHeader>
-            <Link to="/" style={{ textDecoration: "none" }}>
-              <BackIcon size="23" />
+            <Link to='/' style={{ textDecoration: 'none' }}>
+              <BackIcon size='23' />
             </Link>
-            <Text fontSize="large" fontWeight="large" lineHeight="large">
+            <Text fontSize='large' fontWeight='large' lineHeight='large'>
               Adicionar Naver
             </Text>
           </FormHeader>
           <FormInputs>
             <Label>
               <Input
-                placeholder="Nome"
-                name="name"
-                inputTitle="Nome"
+                placeholder='Nome'
+                name='name'
+                inputTitle='Nome'
                 onChange={handleInputChange}
               />
             </Label>
             <Label>
               <Input
-                placeholder="Cargo"
-                name="job_role"
-                inputTitle="Cargo"
+                placeholder='Cargo'
+                name='job_role'
+                inputTitle='Cargo'
                 onChange={handleInputChange}
               />
             </Label>
             <Label>
               <Input
-                placeholder="DD/MM/YYYY"
-                name="birthdate"
-                inputTitle="Data de aniversario"
+                placeholder='DD/MM/YYYY'
+                name='birthdate'
+                inputTitle='Data de aniversario'
                 onChange={handleInputChange}
               />
             </Label>
             <Label>
               <Input
-                placeholder="DD/MM/YYYY"
-                name="admission_date"
-                inputTitle="Data de admissão"
+                placeholder='DD/MM/YYYY'
+                name='admission_date'
+                inputTitle='Data de admissão'
                 onChange={handleInputChange}
               />
             </Label>
             <Label>
               <Input
-                placeholder="Projetos que participou"
-                name="project"
-                inputTitle="Projetos que participou"
+                placeholder='Projetos que participou'
+                name='project'
+                inputTitle='Projetos que participou'
                 onChange={handleInputChange}
               />
             </Label>
             <Label>
               <Input
-                placeholder="URL da foto do Naver"
-                name="url"
-                inputTitle="URL da foto do Naver"
+                placeholder='URL da foto do Naver'
+                name='url'
+                inputTitle='URL da foto do Naver'
                 onChange={handleInputChange}
               />
             </Label>
           </FormInputs>
           <FormFooter>
-            <Button primary marginSize="32px 0px 0px 0px">
+            <Button primary marginSize='32px 0px 0px 0px'>
               Salvar
             </Button>
           </FormFooter>
@@ -136,24 +129,24 @@ const AddNaver = () => {
       {alert && (
         <Modal>
           <Alert
-            title="Naver Criado"
-            message="Naver criado com sucesso"
+            title='Naver Criado'
+            message='Naver criado com sucesso'
             changeAlert={() => {
-              setAlert(false);
-              history.push("/");
+              setAlert(false)
+              history.push('/')
             }}
           />
         </Modal>
       )}
     </Background>
-  );
-};
+  )
+}
 
 const Section = styled.section`
   display: flex;
   justify-content: center;
   margin: auto 0;
-`;
+`
 
 const Form = styled.form`
   display: flex;
@@ -163,23 +156,23 @@ const Form = styled.form`
   max-width: 650px;
   min-width: 300px;
   margin-bottom: 100px;
-`;
+`
 const FormHeader = styled.div`
   display: flex;
   align-self: flex-start;
   align-items: center;
-`;
+`
 
 const FormInputs = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-`;
+`
 
 const FormFooter = styled.div`
   align-self: flex-end;
-`;
+`
 
-const Label = styled.label``;
+const Label = styled.label``
 
-export default AddNaver;
+export default AddNaver

@@ -1,5 +1,5 @@
-import { ArrowBackIos } from "@styled-icons/material-sharp";
-import styled from "styled-components";
+import { ArrowBackIos } from '@styled-icons/material-sharp'
+import styled from 'styled-components'
 
 const BackIconComponent = styled(ArrowBackIos)`
   color: #212121;
@@ -8,6 +8,6 @@ const BackIconComponent = styled(ArrowBackIos)`
   :hover {
     color: #313030;
   }
-`;
+`
 
-export default BackIconComponent;
+export default BackIconComponent

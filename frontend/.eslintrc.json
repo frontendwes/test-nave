@@ -18,15 +18,8 @@
   },
   "plugins": ["react", "react-hooks", "import", "prettier", "standard"],
   "rules": {
-    "quotes": [2, "single"],
-    "semi": [2, "never"],
-    "comma-dangle": [2, "never"],
-    "no-trailing-spaces": [2],
-    "jsx-quotes": ["error", "prefer-single"],
-    "react/jsx-boolean-value": [0],
-    "react-hooks/rules-of-hooks": "error",
-    "prettier/prettier": 2,
-    "space-before-function-paren": 0,
-    "no-unused-vars": 0
+    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
+    "import/prefer-default-export": "off",
+    "jsx-quotes": ["error", "prefer-single"]
   }
 }

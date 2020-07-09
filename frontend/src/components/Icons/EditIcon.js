@@ -1,5 +1,5 @@
-import { Create } from "@styled-icons/material-sharp";
-import styled from "styled-components";
+import { Create } from '@styled-icons/material-sharp'
+import styled from 'styled-components'
 
 const EditIconComponent = styled(Create)`
   color: #212121;
@@ -8,6 +8,6 @@ const EditIconComponent = styled(Create)`
   :hover {
     color: #313030;
   }
-`;
+`
 
-export default EditIconComponent;
+export default EditIconComponent

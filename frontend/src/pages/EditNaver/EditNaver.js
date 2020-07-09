@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { useHistory } from "react-router-dom";
-import moment from "moment";
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { useHistory } from 'react-router-dom'
+import moment from 'moment'
 
-import api from "../../services/api";
+import api from '../../services/api'
 
 import {
   Background,
@@ -14,61 +14,54 @@ import {
   BackIcon,
   Modal,
   Alert,
-} from "../../components";
+} from '../../components'
 
 const EditNaver = ({ match: { params } }) => {
-  const history = useHistory();
+  const history = useHistory()
 
-  const [alert, setAlert] = useState(false);
-  const [naver, setNaver] = useState({});
+  const [alert, setAlert] = useState(false)
+  const [naver, setNaver] = useState({})
   const [formData, setFormData] = useState({
-    name: "",
-    job_role: "",
-    birthdate: "",
-    admission_date: "",
-    project: "",
-    url: "",
-  });
+    name: '',
+    job_role: '',
+    birthdate: '',
+    admission_date: '',
+    project: '',
+    url: '',
+  })
 
   useEffect(() => {
     const fetchNavers = async () => {
       try {
-        const { data } = await api.get(`/navers/${params.id}`);
-        setNaver(data);
+        const { data } = await api.get(`/navers/${params.id}`)
+        setNaver(data)
       } catch (err) {
-        console.log(err);
+        console.log(err)
       }
-    };
-    fetchNavers();
-  }, [params.id]);
+    }
+    fetchNavers()
+  }, [params.id])
 
   useEffect(() => {
     setFormData({
       name: naver.name,
       job_role: naver.job_role,
-      birthdate: moment(naver.birthdate).format("DD/MM/YYYY"),
-      admission_date: moment(naver.admission_date).format("DD/MM/YYYY"),
+      birthdate: moment(naver.birthdate).format('DD/MM/YYYY'),
+      admission_date: moment(naver.admission_date).format('DD/MM/YYYY'),
       project: naver.project,
       url: naver.url,
-    });
-  }, [naver]);
+    })
+  }, [naver])
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    const { name, value } = event.target
+    setFormData({ ...formData, [name]: value })
+  }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    const {
-      name,
-      job_role,
-      birthdate,
-      admission_date,
-      project,
-      url,
-    } = formData;
+    const { name, job_role, birthdate, admission_date, project, url } = formData
 
     const data = {
       name,
@@ -77,16 +70,16 @@ const EditNaver = ({ match: { params } }) => {
       admission_date,
       project,
       url,
-    };
+    }
 
     try {
-      console.log(data);
-      await api.put(`/navers/${naver.id}`, data);
-      setAlert(true);
+      console.log(data)
+      await api.put(`/navers/${naver.id}`, data)
+      setAlert(true)
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  };
+  }
 
   return (
     <Background>
@@ -94,8 +87,8 @@ const EditNaver = ({ match: { params } }) => {
       <Section>
         <Form onSubmit={handleSubmit}>
           <FormHeader>
-            <Text fontSize="large" fontWeight="large" lineHeight="large">
-              <BackIcon size="23" onClick={() => history.push("/")} />
+            <Text fontSize='large' fontWeight='large' lineHeight='large'>
+              <BackIcon size='23' onClick={() => history.push('/')} />
               Editar Naver
             </Text>
           </FormHeader>
@@ -103,54 +96,54 @@ const EditNaver = ({ match: { params } }) => {
             <Label>
               <Input
                 value={formData.name}
-                name="name"
-                inputTitle="Nome"
+                name='name'
+                inputTitle='Nome'
                 onChange={handleInputChange}
               />
             </Label>
             <Label>
               <Input
                 value={formData.job_role}
-                name="job_role"
-                inputTitle="Cargo"
+                name='job_role'
+                inputTitle='Cargo'
                 onChange={handleInputChange}
               />
             </Label>
             <Label>
               <Input
                 value={formData.birthdate}
-                name="birthdate"
-                inputTitle="Data de nascimento"
+                name='birthdate'
+                inputTitle='Data de nascimento'
                 onChange={handleInputChange}
               />
             </Label>
             <Label>
               <Input
                 value={formData.admission_date}
-                name="admission_date"
-                inputTitle="Data de admissão"
+                name='admission_date'
+                inputTitle='Data de admissão'
                 onChange={handleInputChange}
               />
             </Label>
             <Label>
               <Input
                 value={formData.project}
-                name="project"
-                inputTitle="Projetos que participou"
+                name='project'
+                inputTitle='Projetos que participou'
                 onChange={handleInputChange}
               />
             </Label>
             <Label>
               <Input
                 value={formData.url}
-                name="url"
-                inputTitle="URL da foto do Naver"
+                name='url'
+                inputTitle='URL da foto do Naver'
                 onChange={handleInputChange}
               />
             </Label>
           </FormInputs>
           <FormFooter>
-            <Button primary marginSize="32px 0px 0px 0px">
+            <Button primary marginSize='32px 0px 0px 0px'>
               Salvar
             </Button>
           </FormFooter>
@@ -159,24 +152,24 @@ const EditNaver = ({ match: { params } }) => {
       {alert && (
         <Modal>
           <Alert
-            title="Naver Atualizado"
-            message="Naver atualizado com sucesso"
+            title='Naver Atualizado'
+            message='Naver atualizado com sucesso'
             changeAlert={() => {
-              setAlert(false);
-              history.push("/");
+              setAlert(false)
+              history.push('/')
             }}
           />
         </Modal>
       )}
     </Background>
-  );
-};
+  )
+}
 
 const Section = styled.section`
   display: flex;
   justify-content: center;
   margin: auto 0;
-`;
+`
 
 const Form = styled.form`
   display: flex;
@@ -186,23 +179,23 @@ const Form = styled.form`
   max-width: 650px;
   min-width: 300px;
   margin-bottom: 100px;
-`;
+`
 const FormHeader = styled.div`
   display: flex;
   align-self: flex-start;
   align-items: center;
-`;
+`
 
 const FormInputs = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-`;
+`
 
 const FormFooter = styled.div`
   align-self: flex-end;
-`;
+`
 
-const Label = styled.label``;
+const Label = styled.label``
 
-export default EditNaver;
+export default EditNaver

@@ -1,61 +1,61 @@
-import React, { useContext, useState } from "react";
-import styled from "styled-components";
-import { Context } from "../../Context/AuthContext";
+import React, { useContext, useState } from 'react'
+import styled from 'styled-components'
+import { Context } from '../../Context/AuthContext'
 
-import { Logo, Button, Input } from "../../components";
+import { Logo, Button, Input } from '../../components'
 
 const Login = () => {
-  const { handleLogin } = useContext(Context);
+  const { handleLogin } = useContext(Context)
 
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+    email: '',
+    password: '',
+  })
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    const { name, value } = event.target
+    setFormData({ ...formData, [name]: value })
+  }
 
   return (
     <LoginBackground>
       <LoginForm>
-        <Logo widthSize="235px" heightSize="60px" marginSize="auto" />
+        <Logo widthSize='235px' heightSize='60px' marginSize='auto' />
         <Input
-          name="email"
-          type="email"
-          placeholder="E-mail"
+          name='email'
+          type='email'
+          placeholder='E-mail'
           widthSize
-          inputTitle="E-mail"
+          inputTitle='E-mail'
           onChange={handleInputChange}
         />
         <Input
-          name="password"
-          type="password"
-          placeholder="Senha"
+          name='password'
+          type='password'
+          placeholder='Senha'
           widthSize
-          inputTitle="Senha"
+          inputTitle='Senha'
           onChange={handleInputChange}
         />
         <Button
           primary
-          widthSize="100%"
-          marginSize="32px 0px 0px 0px"
+          widthSize='100%'
+          marginSize='32px 0px 0px 0px'
           onClick={() => handleLogin(formData)}
         >
           Entrar
         </Button>
       </LoginForm>
     </LoginBackground>
-  );
-};
+  )
+}
 
 const LoginBackground = styled.div`
   display: flex;
   height: 100vh;
   align-items: center;
   justify-content: center;
-`;
+`
 
 const LoginForm = styled.div`
   display: flex;
@@ -67,6 +67,6 @@ const LoginForm = styled.div`
   box-sizing: border-box;
   padding: 40px 32px;
   margin: 32px;
-`;
+`
 
-export default Login;
+export default Login

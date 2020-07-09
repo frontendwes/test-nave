@@ -1,5 +1,5 @@
-import { Close } from "@styled-icons/material-sharp";
-import styled from "styled-components";
+import { Close } from '@styled-icons/material-sharp'
+import styled from 'styled-components'
 
 const CloseIconComponent = styled(Close)`
   position: absolute;
@@ -10,5 +10,5 @@ const CloseIconComponent = styled(Close)`
   :hover {
     color: #313030;
   }
-`;
-export default CloseIconComponent;
+`
+export default CloseIconComponent

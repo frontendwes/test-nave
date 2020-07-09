@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const InputComponent = ({
-  widthSize = "280px",
+  widthSize = '280px',
   label,
   name,
   placeholder,
@@ -26,8 +26,8 @@ const InputComponent = ({
         type={type}
       />
     </>
-  );
-};
+  )
+}
 
 const Input = styled.input`
   height: 40px;
@@ -45,13 +45,13 @@ const Input = styled.input`
     color: #9e9e9e;
     opacity: 1;
   }
-`;
+`
 
 const Title = styled.p`
   margin-top: 32px;
   font-weight: normal;
   line-height: 14px;
   text-align: 18;
-`;
+`
 
-export default InputComponent;
+export default InputComponent

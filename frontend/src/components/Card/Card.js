@@ -1,49 +1,49 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import { useHistory } from 'react-router-dom'
 
-import { Text, DeleteIcon, EditIcon, ExpandedCard, Modal } from "../";
+import { Text, DeleteIcon, EditIcon, ExpandedCard, Modal } from '../'
 
 const CardComponent = ({ naver }) => {
-  const history = useHistory();
+  const history = useHistory()
 
-  const [isExpandedCard, setExpandedCard] = useState(null);
-  const [naverId, setNaverId] = useState("");
+  const [isExpandedCard, setExpandedCard] = useState(null)
+  const [naverId, setNaverId] = useState('')
 
   const handleExpandedCard = (id) => {
-    setExpandedCard(id);
-    setNaverId(id);
-  };
+    setExpandedCard(id)
+    setNaverId(id)
+  }
 
   return (
     <Card>
       <Picture src={naver.url} onClick={() => handleExpandedCard(naver.id)} />
       <Description>
-        <Text fontSize="medium" fontWeight="large" lineHeight="16px">
+        <Text fontSize='medium' fontWeight='large' lineHeight='16px'>
           {naver.name}
         </Text>
-        <Text fontWeight="small" lineHeight="40px">
+        <Text fontWeight='small' lineHeight='40px'>
           {naver.job_role}
         </Text>
       </Description>
       <Icons>
-        <DeleteIcon size="24" naverId={naver.id} />
-        <EditIcon size="24" onClick={() => history.push(`/edit/${naver.id}`)} />
+        <DeleteIcon size='24' naverId={naver.id} />
+        <EditIcon size='24' onClick={() => history.push(`/edit/${naver.id}`)} />
       </Icons>
       {isExpandedCard && (
         <Modal>
           <ExpandedCard
             naverId={naverId}
             closeCard={() => {
-              setExpandedCard(false);
-              history.push("/");
+              setExpandedCard(false)
+              history.push('/')
             }}
           />
         </Modal>
       )}
     </Card>
-  );
-};
+  )
+}
 
 const Card = styled.div`
   display: flex;
@@ -55,7 +55,7 @@ const Card = styled.div`
   max-height: 420px;
   flex-direction: column;
   margin-top: 32px;
-`;
+`
 
 const Picture = styled.img`
   width: 100%;
@@ -68,12 +68,12 @@ const Picture = styled.img`
   :hover {
     opacity: 0.9;
   }
-`;
+`
 
 const Description = styled.span`
   margin-top: 16px;
-`;
+`
 
-const Icons = styled.span``;
+const Icons = styled.span``
 
-export default CardComponent;
+export default CardComponent
